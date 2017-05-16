@@ -16,6 +16,7 @@
 
 #include "bdslimit30traficsign.h"
 #include "bdsrounditemtraficsign.h"
+#include "bdscircleitemtraficsing.h"
 #include <QGraphicsRectItem>
 #include <QGraphicsEllipseItem>
 #include <QGraphicsScene>
@@ -57,6 +58,7 @@ private:
     QPointF      m_oldPoint;
     BDSLimit30TraficSign *m_rectItem1;
     BDSRoundItemTraficsign *m_rectItem2;
+    BDSCircleItemTraficsing *m_rectItem3;
 };
 }
 #endif // GRAPHICSSCENE_H

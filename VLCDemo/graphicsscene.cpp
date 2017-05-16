@@ -20,7 +20,8 @@ GraphicsScene::GraphicsScene(QObject *parent)
       m_isMove(false),
       m_oldPoint(0,0),
       m_rectItem1(new BDSLimit30TraficSign(100,300,100)),
-      m_rectItem2(new BDSRoundItemTraficsign(100,200,100))
+      m_rectItem2(new BDSRoundItemTraficsign(100,200,100)),
+      m_rectItem3(new BDSCircleItemTraficsing(100,400,100))
 {
     //set scene parame
 
@@ -37,6 +38,7 @@ GraphicsScene::GraphicsScene(QObject *parent)
 
     addItem(m_rectItem1);
     addItem(m_rectItem2);
+    addItem(m_rectItem3);
 
 }
 
