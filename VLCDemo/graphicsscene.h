@@ -15,6 +15,7 @@
 #include <vlc/vlc.h>
 
 #include "bdslimit30traficsign.h"
+#include "bdsrounditemtraficsign.h"
 #include <QGraphicsRectItem>
 #include <QGraphicsEllipseItem>
 #include <QGraphicsScene>
@@ -55,6 +56,7 @@ private:
     bool         m_isMove;
     QPointF      m_oldPoint;
     BDSLimit30TraficSign *m_rectItem1;
+    BDSRoundItemTraficsign *m_rectItem2;
 };
 }
 #endif // GRAPHICSSCENE_H

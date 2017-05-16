@@ -18,7 +18,9 @@ namespace GraphicsVideo {
 GraphicsScene::GraphicsScene(QObject *parent)
     :QGraphicsScene(parent),
       m_isMove(false),
-      m_oldPoint(0,0)
+      m_oldPoint(0,0),
+      m_rectItem1(new BDSLimit30TraficSign(100,300,100)),
+      m_rectItem2(new BDSRoundItemTraficsign(100,200,100))
 {
     //set scene parame
 
@@ -33,8 +35,8 @@ GraphicsScene::GraphicsScene(QObject *parent)
 //    m_rectItem1->setFlag(QGraphicsItem::ItemIsFocusable, true);
 //    addItem(m_rectItem1);
 
-    m_rectItem1 = new BDSLimit30TraficSign(100,200,200);
     addItem(m_rectItem1);
+    addItem(m_rectItem2);
 
 }
 
@@ -86,7 +88,7 @@ const QPixmap &GraphicsScene::FramePix() const
 
 void GraphicsScene::drawBackground(QPainter *painter, const QRectF &rect)
 {
-    qDebug()<<"rect:"<<rect<<sceneRect();
+//    qDebug()<<"rect:"<<rect<<sceneRect();
     painter->beginNativePainting( );
 //    painter->drawPixmap(0,0,m_FramePix);
     painter->drawPixmap(QPointF(rect.x(), rect.y()), m_FramePix.scaled(rect.width(), rect.height()));

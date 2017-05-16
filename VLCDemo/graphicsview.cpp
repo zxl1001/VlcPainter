@@ -119,10 +119,10 @@ static void *lock(void *op, void **plane)
 static void unlock(void *op, void *pic, void *const *plane)
 {
     TCallbackParam *p = (TCallbackParam *)op;
-    uchar *pp = (uchar *)*plane;
+//    uchar *pp = (uchar *)*plane;
     unsigned char *data = (unsigned char *)*plane;
-    QImage a(data, picWidth, picHeight, QImage::Format_ARGB32);
-    p->wnd.updatePicture(a);
+//    QImage a(data, picWidth, picWidth, QImage::Format_ARGB32);
+    p->wnd.updatePicture(QImage(data, picWidth, picHeight, QImage::Format_ARGB32));
     float persent = libvlc_media_player_get_position(mediaPlayer);
     float fps = libvlc_media_player_get_fps(mediaPlayer);
     uint64_t tm = libvlc_media_player_get_time(mediaPlayer);

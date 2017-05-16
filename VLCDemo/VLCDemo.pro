@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     graphicsview.cpp \
     graphicsscene.cpp \
     graphicsitembase.cpp \
-    bdslimit30traficsign.cpp
+    bdslimit30traficsign.cpp \
+    bdsrounditemtraficsign.cpp
 
 HEADERS  += mainwindow.h \
 #    vlcpainter.h \
@@ -27,7 +28,8 @@ HEADERS  += mainwindow.h \
     graphicsview.h \
     graphicsscene.h \
     graphicsitembase.h \
-    bdslimit30traficsign.h
+    bdslimit30traficsign.h \
+    bdsrounditemtraficsign.h
 
 FORMS    += mainwindow.ui \
 #    vlcplayer.ui

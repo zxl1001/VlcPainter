@@ -6,28 +6,28 @@
  *      This software is furnished under license and may be used or
  *      copied only in accordance with the terms of such license.
  *******************************************************************************
- * @file    bdslimit30traficsign.cpp
+ * @file    bdsrounditemtraficsign.cpp
  * @brief
  *******************************************************************************
  */
-#include "bdslimit30traficsign.h"
+#include "bdsrounditemtraficsign.h"
 
-BDSLimit30TraficSign::BDSLimit30TraficSign(int size, int x, int y)
+BDSRoundItemTraficsign::BDSRoundItemTraficsign(int size, int x, int y)
     :GraphicsItemBase(size, x, y)
 {
 
 }
 
-void BDSLimit30TraficSign::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void BDSRoundItemTraficsign::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     painter->beginNativePainting();
-    painter->setPen(QPen(Qt::green,3));
-    painter->drawRect(-m_size / 2, -m_size / 2, m_size, m_size);
+    painter->setPen(QPen(Qt::green,2));
+    painter->drawEllipse(-m_size / 2, -m_size / 2, m_size, m_size);
     painter->endNativePainting();
     GraphicsItemBase::paint(painter, option, widget);
 }
 
-GraphicsItemBase *BDSLimit30TraficSign::createNew(int size, int x, int y)
+GraphicsItemBase *BDSRoundItemTraficsign::createNew(int size, int x, int y)
 {
-    return new BDSLimit30TraficSign(size, x, y);
+    return new BDSRoundItemTraficsign(size, x, y);
 }

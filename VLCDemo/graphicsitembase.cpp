@@ -34,7 +34,7 @@ GraphicsItemBase::~GraphicsItemBase()
 
 QRectF GraphicsItemBase::boundingRect() const
 {
-    return QRectF(-m_size / 2, -m_size / 2, m_size, m_size);
+    return QRectF((-m_size -10) / 2, (-m_size - 10) / 2 , m_size + 10, m_size + 10);
 }
 
 void GraphicsItemBase::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *)
@@ -47,9 +47,9 @@ void GraphicsItemBase::paint(QPainter *painter, const QStyleOptionGraphicsItem *
             painter->setPen(Qt::white);
         painter->drawRect(boundingRect());
 
-        painter->drawLine(m_size / 2 - 9, m_size / 2, m_size / 2, m_size / 2 - 9);
-        painter->drawLine(m_size / 2 - 6, m_size / 2, m_size / 2, m_size / 2 - 6);
-        painter->drawLine(m_size / 2 - 3, m_size / 2, m_size / 2, m_size / 2 - 3);
+        painter->drawLine((m_size+10) / 2 - 9, (m_size+10) / 2, (m_size+10) / 2, (m_size+10) / 2 - 9);
+        painter->drawLine((m_size+10) / 2 - 6, (m_size+10) / 2, (m_size+10) / 2, (m_size+10) / 2 - 6);
+        painter->drawLine((m_size+10) / 2 - 3, (m_size+10) / 2, (m_size+10) / 2, (m_size+10) / 2 - 3);
 
         painter->setRenderHint(QPainter::Antialiasing, false);
     }
