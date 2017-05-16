@@ -60,7 +60,7 @@ GraphicsView::GraphicsView(QWidget *parent)
     mediaPlayer = libvlc_media_player_new_from_media (media);
     libvlc_media_release (media);
 
-    libvlc_video_set_callbacks(mediaPlayer, lock, unlock, display, param);
+    libvlc_video_set_callbacks(mediaPlayer, lock, unlock, NULL/*display*/, param);
     libvlc_video_set_format(mediaPlayer, "RGBA", picWidth, picHeight, picWidth * picPitch);
     setScene(&param->wnd);
     param->wnd.setSceneRect(0,0,1024,768);
@@ -118,6 +118,7 @@ static void *lock(void *op, void **plane)
 
 static void unlock(void *op, void *pic, void *const *plane)
 {
+    qDebug()<<"unlock"<<op<<pic;
     TCallbackParam *p = (TCallbackParam *)op;
 //    uchar *pp = (uchar *)*plane;
     unsigned char *data = (unsigned char *)*plane;
@@ -139,6 +140,7 @@ static void unlock(void *op, void *pic, void *const *plane)
 
 static void display(void *op, void *pic)
 {
+//    qDebug()<<"display"<<op<<pic;
     (void)op;
 }
 //name space end

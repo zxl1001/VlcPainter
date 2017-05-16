@@ -95,11 +95,11 @@ void GraphicsScene::drawBackground(QPainter *painter, const QRectF &rect)
 //    painter->drawPixmap(0,0,m_FramePix);
     painter->drawPixmap(QPointF(rect.x(), rect.y()), m_FramePix.scaled(rect.width(), rect.height()));
     //draw the attribute
-    QRect attrRect(20,20,300,100);
+    QRect attrRect(20, 20, 300, 100);
     painter->save();
     painter->setBrush(QBrush(QColor(0,0,0,80)));
     painter->setPen(Qt::white);
-    painter->drawRoundedRect(attrRect.marginsAdded(QMargins(10,10,0,0)),5,5);
+    painter->drawRoundedRect(attrRect.marginsAdded(QMargins(10,10,0,0)), 5, 5);
     painter->restore();
 
     QFont font;
