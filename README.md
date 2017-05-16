@@ -1,2 +1,2 @@
 #vlcPainter
-![function pic](https://github.com/chenyufeng1991/NewsClient/raw/master/Screenshots/2.png)
+![function pic](https://github.com/zxl1001/VlcPainter/tree/master/Screenshots/display.png)
