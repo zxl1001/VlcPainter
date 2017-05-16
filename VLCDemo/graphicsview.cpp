@@ -118,7 +118,7 @@ static void *lock(void *op, void **plane)
 
 static void unlock(void *op, void *pic, void *const *plane)
 {
-    qDebug()<<"unlock"<<op<<pic;
+//    qDebug()<< "unlock" << op <<pic;
     TCallbackParam *p = (TCallbackParam *)op;
 //    uchar *pp = (uchar *)*plane;
     unsigned char *data = (unsigned char *)*plane;
