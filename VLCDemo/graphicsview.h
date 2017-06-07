@@ -27,10 +27,21 @@ public:
     explicit GraphicsView(QWidget *parent=0);
     virtual ~GraphicsView();
     void play();
+    void reSet();
     void pause();
+    void changePosition(uint pos);
+    void getNexFrame();
+    void getPreFrame();
+    void saveFrame(const QString &path);
+    void setMediaFile(const QString &mediaFile);
 
 protected:
     void resizeEvent(QResizeEvent *event);
+private:
+    QString m_mediaFile; //media file
+    qint64 m_duration;
+    int m_media_fps; //frame/s
+
 
 };
 typedef struct TCallbackParam

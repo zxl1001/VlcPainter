@@ -20,6 +20,14 @@ public:
 private slots:
     void on_playBtn_clicked(bool checked);
 
+    void on_listWidget_doubleClicked(const QModelIndex &index);
+
+    void on_stopBtn_clicked();
+
+    void on_nextFrameBtn_clicked();
+
+    void on_saveFrameBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
 //    VLCVideo::vlcPlayer *m_videoPlayer;

@@ -195,6 +195,7 @@ void GraphicsItemBase::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 
 void GraphicsItemBase::keyPressEvent(QKeyEvent *event)
 {
+    qDebug()<<event->key();
     switch (event->key()) {
     case Qt::Key_Delete:
         deleteSelectedItems(scene());

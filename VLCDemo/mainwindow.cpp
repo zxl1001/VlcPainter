@@ -38,3 +38,23 @@ void MainWindow::on_playBtn_clicked(bool checked)
         m_graphicsPlayer->pause();
     }
 }
+
+void MainWindow::on_listWidget_doubleClicked(const QModelIndex &index)
+{
+    m_graphicsPlayer->setMediaFile(index.data().toString());
+}
+
+void MainWindow::on_stopBtn_clicked()
+{
+    m_graphicsPlayer->reSet();
+}
+
+void MainWindow::on_nextFrameBtn_clicked()
+{
+    m_graphicsPlayer->getNexFrame();
+}
+
+void MainWindow::on_saveFrameBtn_clicked()
+{
+    m_graphicsPlayer->saveFrame("/home/zxl/tmp");
+}

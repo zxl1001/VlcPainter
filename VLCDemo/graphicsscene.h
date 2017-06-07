@@ -45,6 +45,9 @@ public:
 
     const QPixmap &FramePix() const;
 
+    qint64 duration() const;
+    void setDuration(const qint64 &duration);
+
 protected:
     void drawBackground(QPainter *painter, const QRectF &rect);
 
@@ -53,6 +56,7 @@ private:
     uint64_t     m_tm;
     float        m_persent;
     float        m_fps;
+    qint64       m_duration;
     QRectF       m_rect;
     bool         m_isMove;
     QPointF      m_oldPoint;

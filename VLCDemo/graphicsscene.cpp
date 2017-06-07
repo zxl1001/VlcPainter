@@ -95,7 +95,7 @@ void GraphicsScene::drawBackground(QPainter *painter, const QRectF &rect)
 //    painter->drawPixmap(0,0,m_FramePix);
     painter->drawPixmap(QPointF(rect.x(), rect.y()), m_FramePix.scaled(rect.width(), rect.height()));
     //draw the attribute
-    QRect attrRect(20, 20, 300, 100);
+    QRect attrRect(20, 20, 300, 135);
     painter->save();
     painter->setBrush(QBrush(QColor(0,0,0,80)));
     painter->setPen(Qt::white);
@@ -109,12 +109,23 @@ void GraphicsScene::drawBackground(QPainter *painter, const QRectF &rect)
     painter->setFont(font);
     painter->setPen(Qt::white);
     painter->drawText(attrRect,
-                     QString("Persent: %1\nFps: %2\nPosition: %3")
+                     QString("Persent: %1\nFps: %2\nPosition: %3\nDuration:%4")
                      .arg(m_persent).arg(m_fps)
                      .arg(time.addMSecs(m_tm).toString("hh:mm:ss.zzz"))
+                      .arg(m_duration)
                      );
     painter->restore();
     painter->endNativePainting();
+}
+
+qint64 GraphicsScene::duration() const
+{
+    return m_duration;
+}
+
+void GraphicsScene::setDuration(const qint64 &duration)
+{
+    m_duration = duration;
 }
 //name space end
 }
