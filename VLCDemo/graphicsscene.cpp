@@ -11,6 +11,7 @@
  *******************************************************************************
  */
 #include "graphicsscene.h"
+#include "TagCategoryDialog.h"
 
 #include <QTime>
 #include <QDebug>
@@ -35,10 +36,13 @@ GraphicsScene::GraphicsScene(QObject *parent)
 //    m_rectItem1->setFlag(QGraphicsItem::ItemIsSelectable, true);
 //    m_rectItem1->setFlag(QGraphicsItem::ItemIsFocusable, true);
 //    addItem(m_rectItem1);
-
+    m_widgetItem = addWidget(new Video::TagCategoryDialog, Qt::SubWindow | Qt::WindowStaysOnTopHint);;
+    m_widgetItem->setFlag(QGraphicsItem::ItemIsMovable, true);
+    m_widgetItem->moveBy(100,100);
     addItem(m_rectItem1);
     addItem(m_rectItem2);
     addItem(m_rectItem3);
+
 
 }
 
@@ -91,6 +95,9 @@ const QPixmap &GraphicsScene::FramePix() const
 void GraphicsScene::drawBackground(QPainter *painter, const QRectF &rect)
 {
 //    qDebug()<<"rect:"<<rect<<sceneRect();
+    qDebug()<<"widget:"<<m_widgetItem->pos();
+    m_widgetItem->setPos(rect.width()-m_widgetItem->size().width(), (rect.height()-m_widgetItem->size().height()) / 2);
+
     painter->beginNativePainting( );
 //    painter->drawPixmap(0,0,m_FramePix);
     painter->drawPixmap(QPointF(rect.x(), rect.y()), m_FramePix.scaled(rect.width(), rect.height()));

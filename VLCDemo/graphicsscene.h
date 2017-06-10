@@ -48,6 +48,7 @@ public:
     qint64 duration() const;
     void setDuration(const qint64 &duration);
 
+
 protected:
     void drawBackground(QPainter *painter, const QRectF &rect);
 
@@ -63,6 +64,7 @@ private:
     BDSLimit30TraficSign *m_rectItem1;
     BDSRoundItemTraficsign *m_rectItem2;
     BDSCircleItemTraficsing *m_rectItem3;
+    QGraphicsProxyWidget *m_widgetItem;
 };
 }
 #endif // GRAPHICSSCENE_H

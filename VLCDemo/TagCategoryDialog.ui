@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TagCategoryDialog</class>
+ <widget class="QDialog" name="TagCategoryDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>150</width>
+    <height>200</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+	background:transparent;
+	color:#FFFFFF;
+	font-size:10pt;
+}
+#TagCategoryDialog{
+	border:1ps solid #FFFF00;
+	background:rgba(112,126,134,125);
+}
+
+#catageoryList{
+	margin-left:-5px;
+}</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QPushButton" name="extendBtn">
+     <property name="minimumSize">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>&gt;&gt;</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QListWidget" name="catageoryList">
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="spacing">
+      <number>5</number>
+     </property>
+     <item>
+      <property name="text">
+       <string>Limited signs</string>
+      </property>
+      <property name="checkState">
+       <enum>Checked</enum>
+      </property>
+      <property name="flags">
+       <set>ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Directory signs</string>
+      </property>
+      <property name="checkState">
+       <enum>Checked</enum>
+      </property>
+      <property name="flags">
+       <set>ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Warning signs</string>
+      </property>
+      <property name="checkState">
+       <enum>Checked</enum>
+      </property>
+      <property name="flags">
+       <set>ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Vehicles</string>
+      </property>
+      <property name="checkState">
+       <enum>Checked</enum>
+      </property>
+      <property name="flags">
+       <set>ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

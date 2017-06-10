@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     graphicsitembase.cpp \
     bdslimit30traficsign.cpp \
     bdsrounditemtraficsign.cpp \
-    bdscircleitemtraficsing.cpp
+    bdscircleitemtraficsing.cpp \
+    TagCategoryDialog.cpp
 
 HEADERS  += mainwindow.h \
 #    vlcpainter.h \
@@ -31,9 +32,11 @@ HEADERS  += mainwindow.h \
     graphicsitembase.h \
     bdslimit30traficsign.h \
     bdsrounditemtraficsign.h \
-    bdscircleitemtraficsing.h
+    bdscircleitemtraficsing.h \
+    TagCategoryDialog.h
 
 FORMS    += mainwindow.ui \
 #    vlcplayer.ui
+    TagCategoryDialog.ui
 
 LIBS += -lvlc
