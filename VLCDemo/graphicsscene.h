@@ -49,6 +49,8 @@ public:
     void setDuration(const qint64 &duration);
 
 
+
+
 protected:
     void drawBackground(QPainter *painter, const QRectF &rect);
 
@@ -65,6 +67,9 @@ private:
     BDSRoundItemTraficsign *m_rectItem2;
     BDSCircleItemTraficsing *m_rectItem3;
     QGraphicsProxyWidget *m_widgetItem;
+
+    QVector<QPointF> m_itemPos;
+    int m_lastIdx;
 };
 }
 #endif // GRAPHICSSCENE_H

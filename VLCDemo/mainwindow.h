@@ -28,6 +28,8 @@ private slots:
 
     void on_saveFrameBtn_clicked();
 
+    void on_goBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
 //    VLCVideo::vlcPlayer *m_videoPlayer;

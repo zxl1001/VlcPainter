@@ -37,6 +37,11 @@ public:
 
 protected:
     void resizeEvent(QResizeEvent *event);
+
+private:
+    static void *lock(void *op, void **plane);
+    static void unlock(void *op, void *pic, void *const *plane);
+    static void display(void *op, void *pic);
 private:
     QString m_mediaFile; //media file
     qint64 m_duration;

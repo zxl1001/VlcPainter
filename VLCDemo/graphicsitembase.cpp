@@ -18,7 +18,7 @@ const int MIN_ITEM_SIZE = 16;
 //                                  ItemBase                                  //
 //============================================================================//
 
-GraphicsItemBase::GraphicsItemBase(int size, int x, int y) : m_size(size), m_isResizing(false)
+GraphicsItemBase::GraphicsItemBase(int size, int x, int y) : m_size(size), m_isResizing(false),m_isPressed(false)
 {
     setFlag(QGraphicsItem::ItemIsMovable, true);
     setFlag(QGraphicsItem::ItemIsSelectable, true);
@@ -148,6 +148,13 @@ void GraphicsItemBase::shrinkSelectedItems(QGraphicsScene *scene)
     }
 }
 
+bool GraphicsItemBase::isPressed() const
+{
+    return m_isPressed;
+}
+
+
+
 void GraphicsItemBase::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     if (m_isResizing) {
@@ -175,6 +182,7 @@ void GraphicsItemBase::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
 
 void GraphicsItemBase::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
+    m_isPressed = true;
     static qreal z = 0.0;
     setZValue(z += 1.0);
     if (event->button() == Qt::LeftButton && isInResizeArea(event->pos())) {
@@ -186,6 +194,7 @@ void GraphicsItemBase::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void GraphicsItemBase::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+    m_isPressed = false;
     if (event->button() == Qt::LeftButton && m_isResizing) {
         m_isResizing = false;
     } else {

@@ -19,17 +19,14 @@
 namespace GraphicsVideo {
 extern "C"
 {
-static void *lock(void *op, void **plane);
-static void unlock(void *op, void *pic, void *const *plane);
-static void display(void *op, void *pic);
 libvlc_media_player_t *mediaPlayer = Q_NULLPTR;
 libvlc_instance_t *instance = Q_NULLPTR;
 libvlc_media_t *media = Q_NULLPTR;
 TCallbackParam *param = Q_NULLPTR;
 }
 static const int picPitch = 4;
-static const int  picWidth = 1280;
-static const int picHeight = 800;
+static const int  picWidth = 1024;
+static const int picHeight = 720;
 
 GraphicsView::GraphicsView(QWidget *parent)
     :QGraphicsView(parent)
@@ -83,6 +80,7 @@ void GraphicsView::setMediaFile(const QString &mediaFile)
     libvlc_media_release (media);
     libvlc_video_set_callbacks(mediaPlayer, lock, unlock, NULL/*display*/, param);
     libvlc_video_set_format(mediaPlayer, "RGBA", picWidth, picHeight, picWidth * picPitch);
+    qDebug()<<libvlc_media_player_is_seekable(mediaPlayer);
 }
 
 void GraphicsView::play()
@@ -102,6 +100,7 @@ void GraphicsView::reSet()
 {
     if(mediaPlayer != Q_NULLPTR)
     {
+        libvlc_media_player_stop(mediaPlayer);
         //stop the media player
         if(media)
         {
@@ -158,7 +157,7 @@ void GraphicsView::resizeEvent(QResizeEvent *event)
     event->accept( );
 }
 
-static void *lock(void *op, void **plane)
+void *GraphicsView::lock(void *op, void **plane)
 {
     TCallbackParam *p = (TCallbackParam *)op;
     p->mutex.lock();
@@ -167,7 +166,7 @@ static void *lock(void *op, void **plane)
     return NULL;
 }
 
-static void unlock(void *op, void *pic, void *const *plane)
+void GraphicsView::unlock(void *op, void *pic, void *const *plane)
 {
     //    qDebug()<< "unlock" << op <<pic;
     TCallbackParam *p = (TCallbackParam *)op;
@@ -190,7 +189,7 @@ static void unlock(void *op, void *pic, void *const *plane)
 //        qDebug()<< persent << fps << tm <<libvlc_media_player_get_length(mediaPlayer); //ms
 }
 
-static void display(void *op, void *pic)
+void GraphicsView::display(void *op, void *pic)
 {
     //    qDebug()<<"display"<<op<<pic;
     (void)op;

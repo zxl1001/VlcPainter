@@ -22,7 +22,8 @@ GraphicsScene::GraphicsScene(QObject *parent)
       m_oldPoint(0,0),
       m_rectItem1(new BDSLimit30TraficSign(100,300,100)),
       m_rectItem2(new BDSRoundItemTraficsign(100,200,100)),
-      m_rectItem3(new BDSCircleItemTraficsing(100,400,100))
+      m_rectItem3(new BDSCircleItemTraficsing(100,400,100)),
+      m_lastIdx(0)
 {
     //set scene parame
 
@@ -42,8 +43,10 @@ GraphicsScene::GraphicsScene(QObject *parent)
     addItem(m_rectItem1);
     addItem(m_rectItem2);
     addItem(m_rectItem3);
-
-
+    for(int i =0; i<10000; ++i)
+    {
+        m_itemPos.append(QPointF(i, i+1));
+    }
 }
 
 GraphicsScene::~GraphicsScene()
@@ -95,7 +98,22 @@ const QPixmap &GraphicsScene::FramePix() const
 void GraphicsScene::drawBackground(QPainter *painter, const QRectF &rect)
 {
 //    qDebug()<<"rect:"<<rect<<sceneRect();
-    qDebug()<<"widget:"<<m_widgetItem->pos();
+
+    int idx = (m_duration / 1000 * m_fps * m_persent);
+    qDebug()<<"curIdx:"<<idx<<m_itemPos[idx]<<"widget:"<<m_rectItem1->pos();
+    if(m_rectItem1->isPressed())
+    {
+        for(int i = m_lastIdx; i<= idx; ++i)
+        {
+            m_itemPos[i] = m_rectItem1->pos();
+        }
+        m_lastIdx = idx;
+    }
+    else
+    {
+        m_rectItem1->setPos(0,0);
+        m_rectItem1->moveBy(m_itemPos[idx].x(), m_itemPos[idx].y());
+    }
     m_widgetItem->setPos(rect.width()-m_widgetItem->size().width(), (rect.height()-m_widgetItem->size().height()) / 2);
 
     painter->beginNativePainting( );
@@ -119,7 +137,7 @@ void GraphicsScene::drawBackground(QPainter *painter, const QRectF &rect)
                      QString("Persent: %1\nFps: %2\nPosition: %3\nDuration:%4")
                      .arg(m_persent).arg(m_fps)
                      .arg(time.addMSecs(m_tm).toString("hh:mm:ss.zzz"))
-                      .arg(m_duration)
+                     .arg(m_duration)
                      );
     painter->restore();
     painter->endNativePainting();

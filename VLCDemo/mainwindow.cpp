@@ -58,3 +58,8 @@ void MainWindow::on_saveFrameBtn_clicked()
 {
     m_graphicsPlayer->saveFrame("/home/zxl/tmp");
 }
+
+void MainWindow::on_goBtn_clicked()
+{
+    m_graphicsPlayer->changePosition(0);
+}

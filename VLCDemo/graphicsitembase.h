@@ -25,6 +25,10 @@ public:
     virtual ~GraphicsItemBase();
     virtual QRectF boundingRect() const Q_DECL_OVERRIDE;
     virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) Q_DECL_OVERRIDE;
+    bool isResizing() const;
+
+    bool isPressed() const;
+
 protected:
     virtual GraphicsItemBase *createNew(int size, int x, int y) = 0;
     virtual void contextMenuEvent(QGraphicsSceneContextMenuEvent *event) Q_DECL_OVERRIDE;
@@ -45,6 +49,7 @@ protected:
     int m_size;
     QTime m_startTime;
     bool m_isResizing;
+    bool m_isPressed;
 };
 
 #endif // GRAPHICSITEMBASE_H
